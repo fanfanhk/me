@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>凡啊！凡！</title>
+    <style>
+        *{box-sizing: border-box;}
+        body{
+            background: #000;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            text-shadow: 0px 0px 80px;
+        }
+        h1{
+            margin: 0;
+            padding: 0;
+            color: #0ff;
+        }
+        a{color: #fff;}
+        /* 盒子↓ */
+        p{
+            margin: 0;
+        }
+        .box{
+            /* 盒子宽度↓ ---最好别改*/
+            width: 700px;
+            /* 让视频居中对齐↓---最好别动 */
+            text-align: center;
+            /* border: 1px solid #f00; */
+            color: #fff;
+            
+            position: absolute;
+            margin: 20px auto 0;
+            top: 20px;
+            left: 0;
+            right: 0;
+        }
+        /* 图片样式↓ */
+
+        img{
+            /* 视频宽度↓ ---最好不要大于上面盒子的宽度*/
+            width: 700px;
+            height: 390px;
+            /* 灰色的描边↓ ---px是粗细 solid是实线 #555是颜色代码 可以百度html颜色代码修改*/
+            border: 2px solid #222;
+            /* 图片的圆角 */
+            border-radius: 5px;
+            /* 动画时间 */
+            transition: 0.8s;
+        }
+        .img2:hover{border: 2px solid #980b18}
+
+        .box>div{
+            padding: 20px;
+            /* border: 1px solid #f00; */
+        }
+        .szj{
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #fff;
+            padding: 5px;
+            border: 1px solid #eee;
+            background-color: rgb(0,0,0,0.7)
+        }
+        .yl{
+            display: inline;
+            border-bottom:1px dotted #0ff;
+        }
+        .yl a{
+            text-decoration: none;
+            color:#c6d491;
+            
+        }
+        .yl span{
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="box">
+        <!-- 图片部分 -->
+        <img class="img2" src="https://picfiles.alphacoders.com/158/158002.jpg" alt="">
+        <div class="text">
+            <h1>Hess安全组</h1>
+          <p>&nbsp;</p>
+          <h1>凡</h1>
+          <h3>坐标：北京理工大学附属中学&nbsp;<br>
+          </h3>
+          <h4><span style="color: #FFFFFF">QQ：</span><span><a target="view_window" href=""></a>2946<a>986659&nbsp;</a></span></h4>
+          <h4><span style="color: #FFFFFF>WX：</span><span><a  style=">WX：anonymous31415926&nbsp;</span> <br>
+          </h4>
+<h3>友情检测，请及时修复或联系本人修复</h3>
+          <strong> 安全之路，永不妥协</strong> <br>
+          <br><br><br>
+</div>
+    </div>
+    <div class="szj">
+<!-- 音乐部分 -->
+	<audio id="audio_music" autoplay="autoplay" loop="loop" src="http://123.125.10.149/amobile.music.tc.qq.com/C400003fHmKw2J4cET.m4a?guid=5550828748&vkey=F0ADD5CBC4BF248DEA76E9EFA3ED968B7B0B5D34690BC90AFCAAAC70FFABBF0651BB068521983AD80E78BFF0F282CF842A4834D10D5F732B&uin=4771&fromtag=66">   <!这里插入音乐>
+                        <source type="audio/mpeg">  
+
+
+    <!-- 以下js -->
+
+
+    <script>
+    var canvas = document.getElementById('canvas');
+		var ctx = canvas.getContext('2d');
+
+
+		canvas.height = window.innerHeight;
+		canvas.width = window.innerWidth;
+        // 下面的雷军就是代码雨的文字
+		var texts = 'Hess'.split('');
+
+		var fontSize = 16;
+		var columns = canvas.width/fontSize;
+		// 用于计算输出文字时坐标，所以长度即为列数
+		var drops = [];
+		//初始值
+		for(var x = 0; x < columns; x++){
+			drops[x] = 1;
+		}
+
+		function draw(){
+			//让背景逐渐由透明到不透明
+			ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			//文字颜色
+			ctx.fillStyle = '#0F0';
+			ctx.font = fontSize + 'px arial';
+			//逐行输出文字
+			for(var i = 0; i < drops.length; i++){
+				var text = texts[Math.floor(Math.random()*texts.length)];
+				ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+				if(drops[i]*fontSize > canvas.height || Math.random() > 0.95){
+					drops[i] = 0;
+				}
+
+				drops[i]++;
+			}
+		}
+	setInterval(draw, 33);
+</script>
+</body>
+</html>
